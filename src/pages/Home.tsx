@@ -1,192 +1,138 @@
-import { useState, useRef } from 'react';
-import { Mail, Phone, MapPin, Clock } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
+import { useState, useEffect } from 'react';
+import { ArrowRight, Building2, Users, Trophy, Clock } from 'lucide-react';
 
-const Contact = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const [userName, setUserName] = useState('');
-  const form = useRef<HTMLFormElement>(null);
+const slideImages = [ 
+  '/logo.png',
+  'https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+  'https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+  'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+  'https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+];
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    
-    if (!form.current) return;
+const Home = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-    const formData = new FormData(form.current);
-    setUserName(formData.get('user_name') as string);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slideImages.length);
+    }, 5000);
 
-    emailjs.sendForm(
-      'service_cprkavj',
-      'template_y3kbtxc',
-      form.current,
-      '_ruNnY_znyUlyRH36'
-    )
-      .then(() => {
-        setSubmitted(true);
-        toast.success('Message sent successfully!');
-        form.current?.reset();
-      })
-      .catch((error) => {
-        console.error('Error sending email:', error);
-        toast.error('Failed to send message. Please try again.');
-      });
-  };
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <div className="py-16 bg-gray-800">
-      <Toaster position="top-right" />
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-white mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Get in touch with us for any inquiries about our services or to discuss
-            your next project.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className="bg-gray-900 rounded-lg shadow-lg p-8">
-            {submitted ? (
-              <div className="text-center py-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Thank You, {userName}!</h2>
-                <p className="text-gray-300 text-lg">
-                  We appreciate you reaching out to us. We will get back to you shortly.
-                </p>
-                <button
-                  onClick={() => setSubmitted(false)}
-                  className="mt-6 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition-colors"
-                >
-                  Send Another Message
-                </button>
-              </div>
-            ) : (
-              <>
-                <h2 className="text-2xl font-bold text-white mb-6">Send us a Message</h2>
-                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
-                  <div>
-                    <label htmlFor="user_name" className="block text-sm font-medium text-gray-300 mb-1">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      id="user_name"
-                      name="user_name"
-                      className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-blue-500 focus:border-blue-500 text-white"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="user_email" className="block text-sm font-medium text-gray-300 mb-1">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="user_email"
-                      name="user_email"
-                      className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-blue-500 focus:border-blue-500 text-white"
-                      required
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="user_phone" className="block text-sm font-medium text-gray-300 mb-1">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="user_phone"
-                      name="user_phone"
-                      className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-blue-500 focus:border-blue-500 text-white"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-md focus:ring-blue-500 focus:border-blue-500 text-white"
-                      required
-                    ></textarea>
-                  </div>
-                  
-                  <button
-                    type="submit"
-                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors"
-                  >
-                    Send Message
-                  </button>
-                </form>
-              </>
-            )}
+    <div className="flex flex-col">
+      {/* Hero Section with Slideshow */}
+      <section className="h-[600px] relative overflow-hidden">
+        {slideImages.map((image, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              currentSlide === index ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url("${image}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-50" />
           </div>
+        ))}
+        <div className="relative max-w-7xl mx-auto px-4 h-full flex items-center">
+          <div className="text-white">
+            <h1 className="text-5xl font-bold mb-6">
+              Designing Dreams,<br />Building Realities
+            </h1>
+            <p className="text-xl mb-8 max-w-2xl">
+              Transform your vision into reality with Tanz Designs and Constructions. 
+              We bring innovation, quality, and excellence to every project.
+            </p>
+            <a 
+              href="/contact" 
+              className="inline-flex items-center bg-blue-900 text-white px-6 py-3 rounded-md hover:bg-blue-800 transition-colors"
+            >
+              Get Started
+              <ArrowRight className="ml-2" size={20} />
+            </a>
+          </div>
+        </div>
+      </section>
 
-          {/* Contact Information */}
-          <div>
-            <div className="bg-gray-900 rounded-lg p-8 mb-8">
-              <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <MapPin className="text-blue-400 mr-4" size={24} />
-                  <div>
-                    <h3 className="font-medium text-white">Address</h3>
-                    <p className="text-gray-300">Ruiru, Kenya</p>
-                  </div>
-                </div>
+      {/* Stats Section */}
+      <section className="py-16 bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="text-center">
+            <Building2 className="mx-auto text-blue-400 mb-4" size={40} />
+            <h3 className="text-4xl font-bold text-white mb-2">150+</h3>
+            <p className="text-gray-300">Projects Completed</p>
+          </div>
+          <div className="text-center">
+            <Users className="mx-auto text-blue-400 mb-4" size={40} />
+            <h3 className="text-4xl font-bold text-white mb-2">50+</h3>
+            <p className="text-gray-300">Team Members</p>
+          </div>
+          <div className="text-center">
+            <Trophy className="mx-auto text-blue-400 mb-4" size={40} />
+            <h3 className="text-4xl font-bold text-white mb-2">25+</h3>
+            <p className="text-gray-300">Awards Won</p>
+          </div>
+          <div className="text-center">
+            <Clock className="mx-auto text-blue-400 mb-4" size={40} />
+            <h3 className="text-4xl font-bold text-white mb-2">5+</h3>
+            <p className="text-gray-300">Years Experience</p>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="py-16 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold text-white mb-6">
+                Building Excellence Since 2015
                 
-                <div className="flex items-center">
-                  <Phone className="text-blue-400 mr-4" size={24} />
-                  <div>
-                    <h3 className="font-medium text-white">Phone</h3>
-                    <p className="text-gray-300">
-                      <a href="tel:+254796907752" className="hover:text-blue-400">+254 796 907 752</a>
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <Mail className="text-blue-400 mr-4" size={24} />
-                  <div>
-                    <h3 className="font-medium text-white">Email</h3>
-                    <p className="text-gray-300">
-                      <a href="mailto:vchris845@gmail.com" className="hover:text-blue-400">vchris845@gmail.com</a>
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center">
-                  <Clock className="text-blue-400 mr-4" size={24} />
-                  <div>
-                    <h3 className="font-medium text-white">Working Hours</h3>
-                    <p className="text-gray-300">Monday - Friday: 8:00 AM - 6:00 PM</p>
-                    <p className="text-gray-300">Saturday: 9:00 AM - 1:00 PM</p>
-                  </div>
-                </div>
-              </div>
+              </h2>
+              <p className="text-gray-300 mb-6">
+                At Tanz Designs and Constructions, we combine innovative design with superior 
+                construction practices to deliver exceptional results. Our commitment to quality 
+                and attention to detail has made us a trusted name in the construction industry.
+              </p>
+              <p className="text-gray-300 mb-8">
+                We specialize in both residential and commercial construction, offering comprehensive 
+                services from initial design to final execution. Our team of experienced professionals 
+                ensures that every project is completed to the highest standards.
+              </p>
+              <a 
+                href="/about" 
+                className="inline-flex items-center text-blue-400 hover:text-blue-300"
+              >
+                Learn More About Us
+                <ArrowRight className="ml-2" size={20} />
+              </a>
             </div>
-
-            {/* Why Choose Us */}
-            <div className="bg-gray-900 text-white rounded-lg p-8">
-              <h2 className="text-2xl font-bold mb-4">Why Choose Us?</h2>
-              <ul className="space-y-3 text-gray-300">
-                <li>✓ Professional and experienced team</li>
-                <li>✓ Quality workmanship guaranteed</li>
-                <li>✓ Competitive pricing</li>
-                <li>✓ Timely project completion</li>
-                <li>✓ Excellent customer service</li>
-              </ul>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="h-[400px] overflow-hidden rounded-lg">
+                <img 
+                  src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Construction site" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="h-[400px] overflow-hidden rounded-lg">
+                <img 
+                  src="https://plus.unsplash.com/premium_photo-1682617326998-776d7443f02c?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  alt="Architecture design" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };
 
-export default Contact;
+export default Home;
