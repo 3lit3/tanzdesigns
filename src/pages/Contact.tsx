@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [userName, setUserName] = useState('');
   const form = useRef<HTMLFormElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -12,12 +13,14 @@ const Contact = () => {
     
     if (!form.current) return;
 
-    // Replace these with your EmailJS credentials
+    const formData = new FormData(form.current);
+    setUserName(formData.get('user_name') as string);
+
     emailjs.sendForm(
-      'service_cprkavj', // Service ID from EmailJS
-      'template_y3kbtxc', // Template ID from EmailJS
+      'service_cprkavj',
+      'template_y3kbtxc',
       form.current,
-      '_ruNnY_znyUlyRH36' // Public Key from EmailJS
+      '_ruNnY_znyUlyRH36'
     )
       .then(() => {
         setSubmitted(true);
@@ -47,9 +50,9 @@ const Contact = () => {
           <div className="bg-gray-900 rounded-lg shadow-lg p-8">
             {submitted ? (
               <div className="text-center py-8">
-                <h2 className="text-2xl font-bold text-white mb-4">Thank You!</h2>
+                <h2 className="text-2xl font-bold text-white mb-4">Thank You, {userName}!</h2>
                 <p className="text-gray-300 text-lg">
-                  We will get in touch with you in no time.
+                  We appreciate you reaching out to us. We will get back to you shortly.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}

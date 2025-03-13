@@ -2,15 +2,28 @@ import { useState, useEffect } from 'react';
 
 const projects = [
   {
-    title: 'Modern Office Complex',
-    category: 'Commercial',
-    location: 'Nairobi CBD',
+    title: 'Modern Mansion Design',
+    category: 'Residential',
+    location: 'Oaklands, Ruiru',
     images: [
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366412874-3415097a27e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      '/images/projects/1.jpg',
+      '/images/projects/2.jpg',
+      '/images/projects/3.jpg',
+      '/images/projects/4.jpg',
+      '/images/projects/5.jpg',
+      '/images/projects/6.jpg',
+      '/images/projects/7.jpg',
+      '/images/projects/8.jpg',
+      '/images/projects/9.jpg',
+      '/images/projects/10.jpg',
+      '/images/projects/11.jpg',
+      '/images/projects/12.jpg',
+      '/images/projects/13.jpg',
+      '/images/projects/14.jpg',
+      '/images/projects/15.jpg',
+      '/images/projects/16.jpg',
+      '/images/projects/17.jpg',
+      '/images/projects/18.jpg'
     ]
   },
   {
@@ -20,59 +33,11 @@ const projects = [
     images: [
       'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687644-aac4c3eac7f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687534-baa4b7e41b9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-    ]
-  },
-  {
-    title: 'Shopping Mall',
-    category: 'Commercial',
-    location: 'Westlands',
-    images: [
-      'https://images.unsplash.com/photo-1519420573924-65fcd45245f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1567449303078-57ad995bd17f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1519420573924-afd82f3c5511?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1519420573924-40b67b0c0864?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1519420573924-afd82f3c5511?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-    ]
-  },
-  {
-    title: 'Eco-Friendly Apartments',
-    category: 'Residential',
-    location: 'Kilimani',
-    images: [
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c01?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c03?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1545324418-cc1a3fa10c04?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-    ]
-  },
-  {
-    title: 'Corporate Headquarters',
-    category: 'Commercial',
-    location: 'Upper Hill',
-    images: [
-      'https://images.unsplash.com/photo-1577495508048-b635879837f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1577495508048-b635879837f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1577495508048-b635879837f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1577495508048-b635879837f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1577495508048-b635879837f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-    ]
-  },
-  {
-    title: 'Luxury Villa',
-    category: 'Residential',
-    location: 'Runda',
-    images: [
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd812?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd813?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd814?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd815?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      
     ]
   }
+  
 ];
 
 const Projects = () => {

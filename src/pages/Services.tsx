@@ -7,21 +7,38 @@ const services = [
     description: 'Custom architectural designs that blend aesthetics with functionality.',
     icon: Building2,
     images: [
-      'https://images.unsplash.com/photo-1545350724-b1c9883ef888?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      '/images/services/h1.png',
+      '/images/services/h2.png',
+      '/images/services/h3.png',
+      '/images/services/h4.png',
+      '/images/services/h4up.png',
+      '/images/services/h5.png',
+      '/images/services/h6.png',
+      '/images/services/h7.png',
+      '/images/services/h8.png',
+      '/images/services/rooftop.png',
+      '/images/services/mall1.png',
+      '/images/services/mall2.png',
+      '/images/services/design1.jpg',
       'https://images.unsplash.com/photo-1535732759880-bbd5c7265e3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1536895058696-a69b1c7ba34f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
       'https://images.unsplash.com/photo-1541976590-713941681591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     ]
   },
   {
-    title: 'Construction Management',
+    title: 'Consultation and Construction Management',
     description: 'Complete project management from planning to execution.',
     icon: HardHat,
     images: [
       'https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/services/const.jpg',
+      '/images/services/const2.jpg',
+      '/images/services/const3.jpg',
+      '/images/services/const4.jpg',
+      '/images/services/const5.jpg',
+      '/images/services/const6.jpg',
+      '/images/services/consult1.jpg'
+
     ]
   },
   {
@@ -29,10 +46,11 @@ const services = [
     description: 'Professional interior design services for residential and commercial spaces.',
     icon: PaintBucket,
     images: [
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1616137466211-f939a420be84?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1615875020246-1832ff9f777d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/products/lighting.jpg',
+      '/images/products/bathroom.jpg',
+      '/images/products/bathroom2.jpg',
+      '/images/products/bath3.jpg',
+      '/images/products/interior.jpg'
     ]
   },
   {
@@ -40,10 +58,12 @@ const services = [
     description: 'Expert renovation services to transform existing spaces.',
     icon: Hammer,
     images: [
-      'https://images.unsplash.com/photo-1574359411221-632a37dc060d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/services/renov.jpg',
+      '/images/services/renov1.jpg',
+      '/images/services/renov2.jpg',
+      '/images/services/renov3.jpg',
+      '/images/services/renov4.jpg'
+  
     ]
   },
   {
@@ -51,21 +71,28 @@ const services = [
     description: 'Professional structural engineering and consulting services.',
     icon: Wrench,
     images: [
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1574359411221-632a37dc060d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/services/struct.jpg',
+      '/images/services/struct1.jpg',
+      '/images/services/struct2.jpg',
+      '/images/services/struct3.jpg',
+      '/images/services/struct4.jpg',
+      '/images/services/struct5.jpg'
     ]
   },
   {
-    title: 'Green Building',
-    description: 'Sustainable construction practices and eco-friendly solutions.',
+    title: 'Landscaping',
+    description: '"Transforming outdoor spaces with expert design, lush greenery, and sustainable landscaping solutions.🌿✨"',
     icon: Leaf,
     images: [
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1574359411221-632a37dc060d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/services/landscape.jpg',
+      '/images/services/landscape1.jpg',
+      '/images/services/landscape2.jpg',
+      '/images/services/landscape3.jpg',
+      '/images/services/landscape4.jpg',
+      '/images/services/landscape5.jpg',
+      '/images/services/landscape6.jpg',
+      '/images/services/landscape7.jpg'
+
     ]
   }
 ];

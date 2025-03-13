@@ -1,48 +1,58 @@
 import { useState, useEffect } from 'react';
 
+
 const products = [
   {
     name: 'Construction Materials',
-    description: 'High-quality building materials including cement, steel, and aggregates.',
+    description: 'High-quality building materials including sand, cement, balast, and steel.',
     images: [
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/products/sand.jpg',
+      '/images/products/sand2.jpg',
+      '/images/products/ballast2inch.jpg',
+      '/images/products/rods.jpg',
+      '/images/products/cement.jpg'
     ]
   },
   {
     name: 'Pre-fabricated Components',
     description: 'Factory-made building components for faster construction.',
     images: [
-      'https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/products/stones.jpg',
+      '/images/products/stones2.jpg',
+      '/images/products/pallet.jpg',
+      '/images/products/hollowblocks.jpg',
+      '/images/products/bricks.jpg'
+      
     ]
   },
   {
     name: 'Architectural Products',
-    description: 'Doors, windows, and other architectural elements.',
+    description: 'Doors, windows, Gates, Glass Panels and Roofing.',
     images: [
-      'https://images.unsplash.com/photo-1534237710431-e2fc698436d0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/products/roof.jpg',
+      '/images/products/roof2.jpg',
+      '/images/products/window.jpg',
+      '/images/products/window2.jpg',
+      '/images/products/gate2.jpg',
+      '/images/products/door.jpg',
+      '/images/products/door2.jpg',
+      '/images/products/stairs.jpg'
+
     ]
   },
   {
     name: 'Interior Finishes',
     description: 'High-end interior finishing materials and products.',
     images: [
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1587582345426-bf46d5789c23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      '/images/products/lighting.jpg',
+      '/images/products/bathroom.jpg',
+      '/images/products/bathroom2.jpg',
+      '/images/products/bath3.jpg',
+      '/images/products/interior.jpg'
+
     ]
   }
 ];
-
 const Products = () => {
   const [hoveredProduct, setHoveredProduct] = useState<number | null>(null);
   const [currentSlides, setCurrentSlides] = useState<{ [key: number]: number }>({});
